@@ -347,5 +347,4 @@ public class CommonUI extends Constants {
 		}
 	}
 
-
 }

@@ -6,15 +6,13 @@ import com.noorteck.qa.pages.SignInPage;
 import com.noorteck.qa.pages.SignUpPage;
 
 public class ObjInitialize extends Constants {
-	
-	 
-	
+
 	public void initializeClassObj() {
-		//initialize each page class objects here..
+		// initialize each page class objects here..
 		signUpObj = new SignUpPage();
-	    signInObj = new SignInPage();
-		homeObj   = new HomePage();
-	    addressesObj = new AddressesPage();
+		signInObj = new SignInPage();
+		homeObj = new HomePage();
+		addressesObj = new AddressesPage();
 	}
 
 }

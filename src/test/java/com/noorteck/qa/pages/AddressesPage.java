@@ -91,9 +91,9 @@ public class AddressesPage extends CommonUI {
 		enter(enterCity, city);
 	}
 
-	 public void selectStateDropDown(String methodName, String indexValue){
-	 selectFromDropdown(selectState, methodName, indexValue);
-	 }
+	public void selectStateDropD(String selectState) {
+		selectStateDropD(selectState);
+	}
 
 	public void clickCountryRadio() {
 		click(clickCountry);

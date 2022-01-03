@@ -1,5 +1,9 @@
 package com.noorteck.qa.test;
 
+
+
+import org.openqa.selenium.WebElement;
+
 import com.noorteck.qa.pages.AddressesPage;
 import com.noorteck.qa.pages.HomePage;
 import com.noorteck.qa.pages.SignInPage;
@@ -10,41 +14,43 @@ import com.noorteck.qa.utils.ObjInitialize;
 public class AddressBookTest extends ObjInitialize {
 
 	public static void main(String[] args) {
-		
+
 		String url = "http://a.testaddressbook.com/sign_up";
 
 		CommonUI commonUIObj = new CommonUI();
 		ObjInitialize obj = new ObjInitialize();
 		AddressBookTest TestPageObj = new AddressBookTest();
-		//SignUpPage signUpObj = new SignUpPage();
-       // HomePage homeObj = new HomePage();
-		//AddressesPage addressesPageObj = new AddressesPage();
+		 SignUpPage signUpObj = new SignUpPage();
+		HomePage homeObj = new HomePage();
+		AddressesPage addressesPageObj = new AddressesPage();
 
-		/**commonUIObj.openBrowser("chrome");
-		commonUIObj.navigate(url);
-		obj.initializeClassObj();
 		
-		
-		TestPageObj.AddressesTestOne();*/
-	
+		  commonUIObj.openBrowser("chrome"); 
+		  commonUIObj.navigate(url);
+		  obj.initializeClassObj();
+		  
+		  
+		//  TestPageObj.AddressesTestOne();
+		 
+
 		commonUIObj.quitBrowser();
-		
+
 		url = "http://a.testaddressbook.com/sign_in";
 		commonUIObj.openBrowser("chrome");
 		commonUIObj.navigate(url);
 		obj.initializeClassObj();
 		TestPageObj.AddressesTestTwo();
-		
+
 		commonUIObj.quitBrowser();
 
 	}
 
 	public void AddressesTestOne() {
-	
+
 		signUpObj.enterEmail("johncena123@gmail.com");
 		signUpObj.enterPassword("A1234");
 		signUpObj.clickSignUp();
-		
+
 		String expectedText = "Welcome to Address Book";
 		String actualText = "Welcome to Address Book";
 		if (actualText.contains(expectedText)) {
@@ -56,10 +62,8 @@ public class AddressBookTest extends ObjInitialize {
 
 	}
 
-
-
 	public void AddressesTestTwo() {
-		//SignInPage signInObj = new SignInPage();
+		SignInPage signInObj = new SignInPage();
 
 		signInObj.enterEmail("johncena123@gmail.com");
 		signInObj.enterPassword("A1234");
@@ -76,7 +80,7 @@ public class AddressBookTest extends ObjInitialize {
 		addressesPageObj.enterLastName("Doe");
 		addressesPageObj.addressOne("5050 nw 50 st");
 		addressesPageObj.enterCity("Miami");
-		//addressesPageObj.selectFromDropdown("Florida","selectStateDropDown",[10]);
+		addressesPageObj.selectStateDropD("Florida");
 		addressesPageObj.clickCountryRadio();
 		addressesPageObj.enterAge("22");
 		addressesPageObj.enterPhone("3055445544");
@@ -87,7 +91,10 @@ public class AddressBookTest extends ObjInitialize {
 		
 		
 
-		//boolean firstName = enterFirstName.isDisplayed();
+		
+		}
+	public boolean isDisplayed(WebElement enterFirstName) {
+		return enterFirstName.isDisplayed();
 	}
 
 }
