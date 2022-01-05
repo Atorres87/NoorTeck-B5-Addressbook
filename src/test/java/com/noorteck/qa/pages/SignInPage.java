@@ -8,10 +8,10 @@ import com.noorteck.qa.utils.CommonUI;
 
 public class SignInPage extends CommonUI {
 
-	@FindBy(xpath = "//*[@type='submit']")
+	@FindBy(xpath = "//*[@placeholder='Email']")
 	WebElement emailField;
 
-	@FindBy(xpath = "//*[@type='password']")
+	@FindBy(xpath = "//*[@placeholder='Password']")
 	WebElement passswordField;
 
 	@FindBy(xpath = "//*[@type='submit']")
@@ -21,11 +21,11 @@ public class SignInPage extends CommonUI {
 		PageFactory.initElements(driver, this);
 	}
 
-	public void enterEmail(String email) {
+	public void enterEmailField(String email) {
 		enter(emailField, email);
 	}
 
-	public void enterPassword(String password) {
+	public void enterPasswordField(String password) {
 		enter(passswordField, password);
 	}
 
@@ -34,3 +34,4 @@ public class SignInPage extends CommonUI {
 	}
 
 }
+////*[@placeholder='Password']

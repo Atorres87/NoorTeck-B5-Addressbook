@@ -8,13 +8,14 @@ import com.noorteck.qa.utils.CommonUI;
 
 public class AddressesPage extends CommonUI {
 
-	@FindBy(xpath = "//*[text()='New Address']")
+	@FindBy(css = ".row.justify-content-center")
+			//*[text()='New Address']")
 	WebElement clickNewAddress;
 
-	@FindBy(xpath = "//*[@name='address[first_name]']")
+	@FindBy(xpath = "//*[@id='address_first_name']")
 	WebElement enterFirstName;
 
-	@FindBy(xpath = "//*[@name='address[last_name]']")
+	@FindBy(xpath = "//*[@id='address_last_name']")
 	WebElement enterLastName;
 
 	@FindBy(xpath = "//*[@name='address[address1]']")
@@ -29,13 +30,13 @@ public class AddressesPage extends CommonUI {
 	@FindBy(xpath = "//*[@name='address[state]']")
 	WebElement selectState;
 
-	@FindBy(id = "//*[@id = 'address_zip_code']")
+	@FindBy(id = "(//*[@id='address_zip_code'])[1]")
 	WebElement enterZipCode;
 
-	@FindBy(id = "//*[@id = 'address_country_us']")
+	@FindBy(id = "//*[@value = 'us']")
 	WebElement clickCountry;
 
-	@FindBy(id = "//*[@id = 'address_age']")
+	@FindBy(id = "//*[@id='address_age']")
 	WebElement enterAge;
 
 	@FindBy(id = "//*[@id = 'address_website']")
@@ -47,7 +48,7 @@ public class AddressesPage extends CommonUI {
 	@FindBy(id = "//*[@id = 'address_interest_dance']")
 	WebElement selectDancing;
 
-	@FindBy(id = "//*[@id = 'address_note']")
+	@FindBy(id = "//[@id='address_note']")
 	WebElement Note;
 
 	@FindBy(xpath = "//input[@name='commit']")
@@ -91,8 +92,8 @@ public class AddressesPage extends CommonUI {
 		enter(enterCity, city);
 	}
 
-	public void selectStateDropD(String selectState) {
-		selectStateDropD(selectState);
+	public void chooseDropDown(String methodName, String indexValue) {
+		selectFromDropdown(selectState,methodName,indexValue);
 	}
 
 	public void clickCountryRadio() {
@@ -135,5 +136,6 @@ public class AddressesPage extends CommonUI {
 	public void enterEdit(String edit) {
 		enter(Edit, edit);
 	}
+	//public boolean firstNameField1 = enterFirstName.isDisplayed();
 
 }

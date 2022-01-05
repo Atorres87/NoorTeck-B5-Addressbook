@@ -1,8 +1,6 @@
 package com.noorteck.qa.test;
 
-
-
-import org.openqa.selenium.WebElement;
+import org.testng.asserts.SoftAssert;
 
 import com.noorteck.qa.pages.AddressesPage;
 import com.noorteck.qa.pages.HomePage;
@@ -13,89 +11,72 @@ import com.noorteck.qa.utils.ObjInitialize;
 
 public class AddressBookTest extends ObjInitialize {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 
 		String url = "http://a.testaddressbook.com/sign_up";
-
-		CommonUI commonUIObj = new CommonUI();
-		ObjInitialize obj = new ObjInitialize();
-		AddressBookTest TestPageObj = new AddressBookTest();
-		 SignUpPage signUpObj = new SignUpPage();
-		HomePage homeObj = new HomePage();
-		AddressesPage addressesPageObj = new AddressesPage();
-
 		
-		  commonUIObj.openBrowser("chrome"); 
-		  commonUIObj.navigate(url);
-		  obj.initializeClassObj();
-		  
-		  
-		//  TestPageObj.AddressesTestOne();
-		 
-
-		commonUIObj.quitBrowser();
+		CommonUI.openBrowser("chrome");
+		CommonUI.navigate(url);
+		initializeClassObj();
+		AddressesTestOne();
+		
+		
+		
+		CommonUI.quitBrowser();
 
 		url = "http://a.testaddressbook.com/sign_in";
-		commonUIObj.openBrowser("chrome");
-		commonUIObj.navigate(url);
-		obj.initializeClassObj();
-		TestPageObj.AddressesTestTwo();
+		CommonUI.openBrowser("chrome");
+		CommonUI.navigate(url);
+		initializeClassObj();
+		AddressesTestTwo();
+		
 
-		commonUIObj.quitBrowser();
+		CommonUI.quitBrowser();
 
 	}
 
-	public void AddressesTestOne() {
-
-		signUpObj.enterEmail("johncena123@gmail.com");
+	public static void AddressesTestOne(){
+		SignUpPage signUpObj = new SignUpPage();
+		
+		SoftAssert softAssert = new SoftAssert();
+		signUpObj.enterEmail("john_a.nicna@gmail.com");
 		signUpObj.enterPassword("A1234");
 		signUpObj.clickSignUp();
 
-		String expectedText = "Welcome to Address Book";
+	String expectedText = "Welcome to Address Book";
 		String actualText = "Welcome to Address Book";
-		if (actualText.contains(expectedText)) {
-			System.out.println("Text verified");
-		} else {
-			System.out.println("wrong Test");
 
-		}
-
+		softAssert.assertEquals(expectedText, actualText);
+		softAssert.assertAll();
 	}
 
-	public void AddressesTestTwo() {
+	public static void AddressesTestTwo() throws InterruptedException{
 		SignInPage signInObj = new SignInPage();
-
-		signInObj.enterEmail("johncena123@gmail.com");
-		signInObj.enterPassword("A1234");
-		signInObj.clickSignIn();
-
 		HomePage homeObj = new HomePage();
-
+		AddressesPage addressesObj = new AddressesPage();
+		
+		signInObj.enterEmailField("john_a.nicna@gmail.com");
+		signInObj.enterPasswordField("A1234");
+		signInObj.clickSignIn();
 		homeObj.clickAddresses();
-
-		AddressesPage addressesPageObj = new AddressesPage();
-
-		addressesPageObj.clickNewAddress();
-		addressesPageObj.enterFirstName("John");
-		addressesPageObj.enterLastName("Doe");
-		addressesPageObj.addressOne("5050 nw 50 st");
-		addressesPageObj.enterCity("Miami");
-		addressesPageObj.selectStateDropD("Florida");
-		addressesPageObj.clickCountryRadio();
-		addressesPageObj.enterAge("22");
-		addressesPageObj.enterPhone("3055445544");
-		addressesPageObj.clickDancing();
-		addressesPageObj.enterNote("Automation is Fun");
-		addressesPageObj.clickCreateAddress();
-		addressesPageObj.clickList();
+        addressesObj.clickNewAddress();
+		addressesObj.enterFirstName("John");
+		addressesObj.enterLastName("Cena");
+		addressesObj.addressOne("123 Java Drive");
+		addressesObj.enterCity("Miami");
+		//addressesObj.chooseDropDown("value", "FL");
+		//addressesObj.clickCountryRadio();
+		//addressesObj.enterAge("22");
+		//addressesObj.enterPhone("3055445544");
+		//addressesObj.clickDancing();
+	    addressesObj.enterNote("Automation is Fun");
+		addressesObj.clickCreateAddress();
+		addressesObj.clickList();
 		
-		
-
-		
-		}
-	public boolean isDisplayed(WebElement enterFirstName) {
-		return enterFirstName.isDisplayed();
+		//Thread.sleep(2000);
+		//addressesObj.enterFirstName.isDisplayed();
 	}
+
 
 }
 

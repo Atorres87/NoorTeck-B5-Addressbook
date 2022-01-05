@@ -11,7 +11,7 @@ public class HomePage extends CommonUI {
 	@FindBy(xpath = "//*[@class='nav-item nav-link active']")
 	WebElement HomeLink;
 
-	@FindBy(xpath = "//*[@data-test='addresses']")
+	@FindBy(xpath = "//*[@class='nav-item nav-link'][1]")
 	WebElement AddressesLink;
 
 	@FindBy(xpath = "//*[@data-test='sign-out']")
